@@ -1,88 +1,123 @@
-print("Welcome to data anaylzer and tranformer program \n" )
+class Employee():
+    def __init__(self,name,age,emp_id,salary):
+        self.name=name
+        self.age=age
+        self.emp_id=emp_id
+        self.salary=salary
 
-def fact(num):
-    if num <= 1:
-        return 1
-    return num * fact(num - 1)
+    def getdata(self):
+        print("\nName: ",self.name)
+        print("Age: ",self.age) 
+        print("ID: ",self.emp_id)
+        print("Salary: ",self.salary)
+        
+class Manager(Employee):
+    def __init__(self,name,age,emp_id,salary,department):
+        super().__init__(name,age,emp_id,salary)
+        self.department = department
+        
+    def getdata(self):
+        print("\nName: ",self.name)
+        print("Age: ",self.age)
+        print("ID: ",self.emp_id)
+        print("Salary: ",self.salary)
+        print("Department: ",self.department)
 
-def display_summary(record):
-    print("\nData Summary:")
-    print(f" - Tatal elements of data: {len(record)}")
-    print(f" - Minimum value: {min(record)}")
-    print(f" - Maximum value: {max(record)}")
-    print(f" - Sum of all value: {sum(record)}")
-    print(f" - Average value : {sum(record) / len(record):}")
-    
-def stats(record):
-    return min(record), max(record), sum(record), sum(record) / len (record)
 
-record = []
+class Developer(Employee):
+    def __init__(self,name,age,emp_id,salary,programming_language):
+        super().__init__(name,age,emp_id,salary)     
+        self.programming_language = programming_language
+        
+    def getdata(self):
+        print("\nName: ",self.name)
+        print("Age: ",self.age) 
+        print("ID: ",self.emp_id)
+        print("Salary: ",self.salary)  
+        print("programing Language: ",self.programming_language)
+     
+
+Employee_li = []
+Manager_li = []
+Developer_li = []
+
+print("\n--- Python OOP Project: Employee Management System ---\n")
 
 while True:
-    print("\n Main menu:")
-    print("1. Input Data")
-    print("2. Display Data Summary")
-    print("3. calcate factorial")
-    print("4. Filter Data by threshold")
-    print("5. sort data")
-    print("6. Display dataset statistict")
-    print("7. Exit program\n")
-    choice = int(input("Enter your choice: ")) 
-    
-    if choice == 1:
-        raw = input("Enter data for a 1D array (separated by spaces): \n" )
-        for i in raw.split():
-            record.append(int(i))
-            
-        print("\n Data has been stored successfully! \n")
-            
-    elif choice == 2:
-        if record:
-            display_summary(record)
-        else:
-            print("No data to display.")
-            
-    elif choice == 3:
-        print()
-        num = int(input("Enter a number to calculate its factorial:"))
-        print()
-        print(f"Factorial of {num} is: {fact(num)}\n")  
-        
-    elif choice == 4:
-        print()
-        threshold = int(input("Enter a threshold value to filter out data above this value: \n"))
-        filtered = [i for i in record if i > threshold]
-        print(f"\n Filtered Data (values > {threshold}) : {filtered} \n")
-        
-    elif choice == 5:
-        if record:
-            ascending = sorted(record)
-            descending = sorted(record, reverse=True)
 
-            print(f"\nSorted data in Ascending order: {ascending}")
-            print(f"Sorted data in Descending order: {descending}\n")
-        else:
-             print("No data to sort.")
-        
-    elif choice == 6:
-        if record:
-            min_value = min(record)
-            max_value = max(record)
-            total = sum(record)
+    print("\nChoose an option:")
+    print("1. Create an Employee")
+    print("2. Create a Manager")
+    print("3. Create a Developer ")
+    print("4. Show Details")
+    print("5. Exit\n")
 
-            print("\n Dataset Statistics: \n")
-            print(f" - Minimum value : {min_value}")
-            print(f" - Maximum value : {max_value}")
-            print(f" - Sum of all values : {total}")
-            print(f" - Average value : {total / len(record):} \n")
-        else:
-            print("No data to display.")
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        name = input("\nEnter Name: ")
+        age = int(input("Enter Age: "))
+        emp_id = int(input("Enter Employee ID: "))
+        salary = int(input("Enter salary: $ "))
+        eobj = Employee(name,age,emp_id,salary)
+        Employee_li.append(eobj)
+        print(f"\nEmployee created with name: {name} , age: {age} , ID: {emp_id} and salary:$ {salary} .\n")
+
+        print("---choose another operation---\n")
     
-            
-            
-    elif choice == 7:
-        print("Thank you for using the Data Analyzer and Transformer Program. Goodbye!")
+    elif choice == "2":
+        name = input("\nEnter Name: ")
+        age = int(input("Enter Age: "))
+        emp_id = input("Enter Employee ID: ")
+        salary = int(input("Enter salary: $ "))
+        dep = input("Enter Department: ")
+        mobj = Manager(name,age,emp_id,salary,dep)
+        Manager_li.append(mobj)
+        print(f"\nManager created with name: {name} , age: {age} , ID: {emp_id} , salary:$ {salary}, and department: {dep} .\n")
+
+        print("---choose another operation---\n")
+
+    elif choice == "3":
+        name = input("\nEnter Name: ")
+        age = int(input("Enter Age: "))
+        emp_id = input("Enter Employee ID: ")
+        salary = int(input("Enter salary: $ "))
+        programming_language = input("Enter Programming Language: ")
+        dobj = Developer(name,age,emp_id,salary,programming_language)
+        Developer_li.append(dobj)
+        print(f"\nDeveloper created with name: {name}, age: {age}, ID: {emp_id}, salary: ${salary} and known programing language is {programming_language } .\n")
+
+        print("---choose another operation---\n")
+
+    elif choice == "4":
+        print("\nchoose Details to show:\n")
+        print("1.Employee")
+        print("2.Manager")
+        print("3.Developer")
+        
+        ch = int(input("\nEnter your choice: "))
+        
+        if ch == 1:
+            print("\nEmployee Details: ")
+            for eobj in Employee_li:
+                eobj.getdata()
+                
+        elif ch == 2:
+            print("\nManager Details: ")
+            for mobj in Manager_li:
+                mobj.getdata()
+                
+        elif ch == 3:
+            print("\nDeveloper Details: ")
+            for dobj in Developer_li:
+                dobj.getdata()
+                
+        else:
+            print("Invalid choice!❌")        
+        
+    elif choice == "5":
+        print("Exiting...")
         break
-    
+
     else:
-        print("Invalid choice. Please try again.\n")
+        print("Invalid choice. Try again.")
