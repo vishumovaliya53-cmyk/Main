@@ -1,22 +1,23 @@
-#file handling allows us to read , write , and modify files in python.
+# # #file handling allows us to read , write , and modify files in python.
 
-#python provides built in functions like open() , read() , write() , and close()
-#for file operation
+# # #python provides built in functions like open() , read() , write() , and close()
+# # #for file operation
 
-# * MODE
+# # # * MODE
 
-# 1."r" :- "Read File"
-# 2."w" :- "write file"
-# 3."a" :- "Appened file"
-# 4."x" :- "Create file"
-# 5."b" :- "Binory file"
-# 6."t" :- "Text file"
+# # # 1."r" :- "Read File"
+# # # 2."w" :- "write file"
+# # # 3."a" :- "Appened file"
+# # # 4."x" :- "Create file"
+# # # 5."b" :- "Binory file"
+# # # 6."t" :- "Text file"
 
-# Read Mode :- File create karni hogi
+# # # Read Mode :- File create karni hogi
+
+print("\nWelcome To File Handling !\n")
 
 while True:
-
-    print("\nCreate your own file : \n")
+    
     print("1.Enter X To Create File: ")
     print("2.Enter R To Read file: ")
     print("3.Enter W To write File: ")
@@ -26,31 +27,31 @@ while True:
     choice = (input("\nEnter Your Requirement : "))
 
     if choice == "X":
-        file_name = str(input("\n Enter your File Name: "))
+        file_name = str(input("\nEnter your File Name: "))
+        print("\nCreate your own file : \n")
 
         with open(file_name , "x") as file:
             print(f"File {file_name} Created Successfully !")
 
     
     elif choice == "R":
-        file_name = str(input("\n Enter File Name To Read: "))
+        file_name = str(input("\nEnter File Name To Read: "))
 
         with open(file_name,"r") as file :
-            print("\n your content -------")
             print(file.read())
 
-    elif choice=="w":
-        file_name = input("Enter Something in file")
+    elif choice=="W":
+        file_name = input("Enter your file name: ")
 
         with open(file_name, "w") as file:
-            data = input("\nEnter Data to your File :\n")
+            data = input("\nEnter Data to your File: ")
             file.write(data)
 
     elif choice == "A":       
         file_name = input("Enter file name to append :")
 
         with open(file_name,"a") as file:
-            data2=input("Enter data to add in oyur exixting file")
+            data2=input("Enter data to add in your Append file: ")
             file.write("\n"+ data2)
 
     elif choice == "E":
@@ -58,4 +59,4 @@ while True:
         break
 
     else:
-        print("Invalid Reqquirement!")
+        print("Invalid Requirement!")
