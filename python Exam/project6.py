@@ -41,7 +41,7 @@ class filedata:
         verify = str(input("\nYou Want To Delete This File(y/n): "))
         if verify == "y":
             print("\nAll journal have been deleted!!")
-        elif verify == "n":
+        elif verify == "n": 
             print("\nDone")
         else:
             print("\nNo journal Entries to Delete.") 
