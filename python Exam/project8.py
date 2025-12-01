@@ -55,7 +55,6 @@ def create_array():
 
     else:
         print("Invalid choice!")
-        return None
 
 
 
@@ -69,6 +68,9 @@ def mathematical_operations(arr):
     print("2. Subtraction")
     print("3. Multiplication")
     print("4. Division")
+    print("5. Indexing")
+    print("6. Slicing")
+    print("7. Go Back")
 
     choice = int(input("Enter your choice: "))
     n = int(input("Enter number: "))
@@ -81,6 +83,20 @@ def mathematical_operations(arr):
         print(arr * n)
     elif choice == 4:
         print(arr / n)
+    elif choice == 5:
+        idx = tuple(map(int, input("Enter index (e.g., 1 2 for 2D, 0 1 2 for 3D): ").split()))
+        print("\nIndexed Value:", arr[idx])
+    elif choice == 6:
+        slice_input = input("Enter slicing indices (e.g., 0:2,1:3 for 2D): ")
+        slice_parts = slice_input.split(',')
+        slices = []
+        for part in slice_parts:
+            start, end = map(int, part.split(':'))
+            slices.append(slice(start, end))
+        print("\nSliced Array:")
+        print(arr[tuple(slices)])
+    elif choice == 7:
+        return
     else:
         print("Invalid choice!")
         
@@ -121,17 +137,30 @@ def split_array(arr):
     print("\nSplit array:")
     print("1. Horizontal split")
     print("2. Vertical split")
-        
-    ch = int(input("Enter your choice: "))
+    print("3. Go Back")
+    
+    choice = int(input("Enter your choice: "))
 
-    if ch == 1:
-        print(np.hsplit(arr, 2))
+    if choice == 1:
+        cols = arr.shape[1]
+        if cols % 2 != 0:
+            print(np.array_split(arr, 2, axis=1))
+        else:
+            print(np.hsplit(arr, 2))
 
-    elif ch == 2:
-        print(np.vsplit(arr, 2))
-
+    elif choice == 2:
+        rows = arr.shape[0]
+        if rows % 2 != 0:
+            print(np.array_split(arr, 2, axis=0))
+        else:
+            print(np.vsplit(arr, 2))
+    
+    elif choice == 3:
+        return
+    
     else:
         print("Invalid choice!")
+
         
 
 # --------------------------------------------------------
@@ -143,6 +172,7 @@ def search_sort_filter(arr):
     print("1. Search element")
     print("2. Sort array")
     print("3. Filter array")
+    print("4. Go Back")
 
     choice = int(input("Enter  your choice: "))
 
@@ -157,6 +187,9 @@ def search_sort_filter(arr):
     elif choice == 3:
         limit = int(input("Show elements greater than: "))
         print(arr[arr > limit])
+        
+    elif choice == 4:
+        return
 
     else:
         print("Invalid choice!")
@@ -173,6 +206,7 @@ def aggregation_functions(arr):
     print("3. Median")
     print("4. Max")
     print("5. Min")
+    print("6. Go Back")
 
     choice = int(input("Enter your choice: "))
 
@@ -186,6 +220,8 @@ def aggregation_functions(arr):
         print("Max =", np.max(arr))
     elif choice == 5:
         print("Min =", np.min(arr))
+    elif choice == 6:
+        return
     else:
         print("Invalid choice!")
 
@@ -235,5 +271,5 @@ def main():
 
 
 # Run program
-main()
-
+if __name__ == "__main__":
+    main()
