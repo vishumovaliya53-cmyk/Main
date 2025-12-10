@@ -11,7 +11,7 @@ import seaborn as sns
 class SalesDataAnalyzer:
 
     def __init__(self):
-        self.df = None  # main dataset variable
+        self.df = None  
 
     # -----------------------------------------------------------
     # 1. LOAD CSV DATA
@@ -44,32 +44,26 @@ class SalesDataAnalyzer:
 
             ch = int(input("Enter your choice: "))
 
-            # 1. First 5 rows
             if ch == 1:
                 print("\n===== First 5 rows =====")
                 print(self.df.head())
 
-            # 2. Last 5 rows
             elif ch == 2:
                 print("\n===== Last 5 rows =====")
                 print(self.df.tail())
 
-            # 3. Column names
             elif ch == 3:
                 print("\n===== Column Names =====")
                 print(list(self.df.columns))
 
-            # 4. Data types
             elif ch == 4:
                 print("\n===== Data Types =====")
                 print(self.df.dtypes)
 
-            # 5. Basic info
             elif ch == 5:
                 print("\n===== Basic Info =====")
                 print(self.df.info())
 
-            # Back
             elif ch == 6:
                 return
 
@@ -96,7 +90,6 @@ class SalesDataAnalyzer:
 
             ch = input("Enter your choice: ")
 
-            # 1. show column
             if ch == "1":
                 col = input("Enter column name: ")
                 if col in self.df.columns:
@@ -104,7 +97,6 @@ class SalesDataAnalyzer:
                 else:
                     print("Column not found!")
 
-            # 2. filter rows
             elif ch == "2":
                 col = input("Enter column name to filter: ")
                 if col not in self.df.columns:
@@ -113,14 +105,12 @@ class SalesDataAnalyzer:
                 val = input("Enter value to match: ")
                 print(self.df[self.df[col] == val])
 
-            # 3. add column
             elif ch == "3":
                 col = input("Enter new column name: ")
                 val = input("Enter value for all rows: ")
                 self.df[col] = val
                 print("Column added successfully!")
 
-            # 4. delete column
             elif ch == "4":
                 col = input("Enter column name to delete: ")
                 if col in self.df.columns:
@@ -129,7 +119,6 @@ class SalesDataAnalyzer:
                 else:
                     print("Column not found!")
 
-            # 5. sort data
             elif ch == "5":
                 col = input("Enter column name to sort: ")
                 if col in self.df.columns:
@@ -138,7 +127,6 @@ class SalesDataAnalyzer:
                 else:
                     print("Column not found!")
 
-            # 6. show final df
             elif ch == "6":
                 print("\n=== Updated DataFrame ===")
                 print(self.df)
@@ -167,7 +155,6 @@ class SalesDataAnalyzer:
 
             ch = input("Enter your choice: ")
 
-            # 1. show missing rows
             if ch == "1":
                 missing = self.df[self.df.isnull().any(axis=1)]
                 if missing.empty:
@@ -176,7 +163,6 @@ class SalesDataAnalyzer:
                     print("\nRows with missing values:")
                     print(missing)
 
-            # 2. fill with mean
             elif ch == "2":
                 num_cols = self.df.select_dtypes(include=['float64', 'int64'])
                 if num_cols.empty:
@@ -185,14 +171,12 @@ class SalesDataAnalyzer:
                     self.df[num_cols.columns] = num_cols.fillna(num_cols.mean())
                     print("Missing values filled with mean!")
 
-            # 3. drop missing rows
             elif ch == "3":
                 before = len(self.df)
                 self.df.dropna(inplace=True)
                 after = len(self.df)
                 print(f"Dropped {before - after} rows containing missing values.")
 
-            # 4. replace with custom value
             elif ch == "4":
                 val = input("Enter value to replace missing values with: ")
                 self.df.fillna(val, inplace=True)
@@ -222,12 +206,10 @@ class SalesDataAnalyzer:
 
             ch = input("Enter your choice: ")
 
-            # 1. Full summary
             if ch == "1":
                 print("\n===== Summary Statistics =====")
                 print(self.df.describe(include='all'))
 
-            # 2. stats for single column
             elif ch == "2":
                 col = input("Enter column name: ")
                 if col in self.df.columns:
@@ -236,7 +218,6 @@ class SalesDataAnalyzer:
                 else:
                     print("Column not found!")
 
-            # 3. correlation matrix
             elif ch == "3":
                 numeric_df = self.df.select_dtypes(include=['float64', 'int64'])
                 if numeric_df.empty:
@@ -245,7 +226,6 @@ class SalesDataAnalyzer:
                     print("\n===== Correlation Matrix =====")
                     print(numeric_df.corr())
 
-            # 4. unique values
             elif ch == "4":
                 col = input("Enter column name: ")
                 if col in self.df.columns:
@@ -275,14 +255,10 @@ class SalesDataAnalyzer:
             print("3. Histogram")
             print("4. Scatter Plot")
             print("5. Heatmap (Correlation)")
-            print("6. Stack Plot")
-            print("7. Back to Main Menu")
+            print("6. Back to Main Menu")
 
             ch = input("Enter your choice: ")
 
-            # ----------------------------------------------
-            # 1. LINE PLOT
-            # ----------------------------------------------
             if ch == "1":
                 x = input("Enter X-axis column: ")
                 y = input("Enter Y-axis column: ")
@@ -298,9 +274,6 @@ class SalesDataAnalyzer:
                 else:
                     print("Invalid columns!")
 
-            # ----------------------------------------------
-            # 2. BAR PLOT
-            # ----------------------------------------------
             elif ch == "2":
                 x = input("Enter X-axis column: ")
                 y = input("Enter Y-axis column: ")
@@ -315,9 +288,6 @@ class SalesDataAnalyzer:
                 else:
                     print("Invalid columns!")
 
-            # ----------------------------------------------
-            # 3. HISTOGRAM
-            # ----------------------------------------------
             elif ch == "3":
                 col = input("Enter column for histogram: ")
                 if col in self.df.columns:
@@ -329,9 +299,6 @@ class SalesDataAnalyzer:
                 else:
                     print("Column not found!")
 
-            # ----------------------------------------------
-            # 4. SCATTER PLOT
-            # ----------------------------------------------
             elif ch == "4":
                 x = input("Enter X-axis column: ")
                 y = input("Enter Y-axis column: ")
@@ -346,9 +313,6 @@ class SalesDataAnalyzer:
                 else:
                     print("Invalid columns!")
 
-            # ----------------------------------------------
-            # 5. HEATMAP
-            # ----------------------------------------------
             elif ch == "5":
                 numeric_df = self.df.select_dtypes(include=['int64', 'float64'])
                 if numeric_df.empty:
@@ -358,55 +322,23 @@ class SalesDataAnalyzer:
                     sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm')
                     plt.title("Correlation Heatmap")
                     plt.show()
-
-            # ----------------------------------------------
-            # 6. STACK PLOT
-            # ----------------------------------------------
-            elif ch == "6":
-                print("\nEnter multiple numeric columns for stack plot (comma separated):")
-                print("Example: sales,profit,expenses")
-
-                columns = input("Enter column names: ").replace(" ", "").split(",")
-
-                # Check if columns exist
-                missing = [c for c in columns if c not in self.df.columns]
-                if missing:
-                    print("These columns do not exist:", missing)
-                    continue
-
-                # Confirm numeric columns
-                non_numeric = [c for c in columns if self.df[c].dtype not in ['int64', 'float64']]
-                if non_numeric:
-                    print("Non-numeric columns cannot be used:", non_numeric)
-                    continue
-
-                x_col = input("Enter X-axis column: ")
-
-                if x_col not in self.df.columns:
-                    print("X-axis column not found!")
-                    return
-
-                plt.figure(figsize=(10,6))
-                plt.stackp
+            else:
                 return
                 
     # -----------------------------------------------------------
     # 7. SAVE VISUALIZATION
     # -----------------------------------------------------------
-    def save_visualization(self):
-        if self.last_plot is None:
-            print("\nNo visualization found! Create a plot first.\n")
-            return
+   
+    def save_visulization(df):
 
-        print("\n== Save Visualization ==")
-        file_name = input("Enter filename (e.g., chart.png): ")
+       print("\n== Save Visualization ==")
+       filename = input("Enter file name to save the plot (e.g., plot.png): ")
 
-        try:
-            self.last_plot.savefig(file_name)
-            print(f"Visualization saved successfully as '{file_name}'\n")
-        except Exception as e:
-            print("Error saving file:", e)
-
+       try:
+           plt.savefig(filename)
+           print(f"Visualization saved as {filename} successfully!")
+       except Exception as e:
+           print("Error saving file:", e)
 
 
 # ===============================================================
@@ -451,7 +383,7 @@ def main():
             analyzer.visualize_data()
         
         elif choice == "7":
-            analyzer.save_visualization()
+            analyzer.save_visulization()
 
         elif choice == "8":
             print("Exiting program...")
