@@ -1,21 +1,11 @@
 Date,Product,Category,Price,Quantity Sold,Total Sales
-2023-01-05,Laptop,Electronics,55000,3,165000
-2023-01-07,Headphones,Electronics,2500,12,30000
-2023-01-10,Shirt,Fashion,800,20,16000
-2023-01-12,Shoes,Fashion,2500,8,20000
-2023-01-15,Refrigerator,Home Appliances,42000,2,84000
-2023-01-18,Microwave,Home Appliances,7800,5,39000
-2023-01-20,Mobile,Electronics,18000,6,108000
-2023-01-25,Jeans,Fashion,1500,15,22500
-2023-01-28,Air Conditioner,Home Appliances,38000,1,38000
-2023-02-01,Tablet,Electronics,22000,4,88000
-2023-02-03,T-Shirt,Fashion,500,25,12500
-2023-02-06,Blender,Home Appliances,3500,10,35000
-2023-02-08,Smartwatch,Electronics,7000,9,63000
-2023-02-12,Jacket,Fashion,2800,7,19600
-2023-02-14,Washing Machine,Home Appliances,32000,2,64000
-2023-02-17,Camera,Electronics,30000,3,90000
-2023-02-20,Slippers,Fashion,300,30,9000
-2023-02-22,Iron,Home Appliances,1500,12,18000
-2023-02-25,Keyboard,Electronics,1500,14,21000
-2023-02-28,Monitor,Electronics,12000,5,60000
+2024-01-01,Shampoo,Personal Care,120,10,1200
+2024-01-02,Toothpaste,Personal Care,80,15,1200
+2024-01-03,Biscuits,Food,20,50,1000
+2024-01-05,Shampoo,Personal Care,120,5,600
+2024-01-07,Biscuits,Food,20,30,600
+2024-01-10,Soap,Personal Care,40,20,800
+2024-01-12,Chips,Food,30,40,1200
+2024-01-15,Juice,Food,60,10,600
+2024-01-20,Notebook,Stationery,50,12,600
+2024-01-25,Pen,Stationery,10,100,1000
