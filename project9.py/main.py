@@ -109,7 +109,7 @@ class SalesDataAnalyzer:
                 col = input("Enter column name to filter: ")
                 if col not in self.df.columns:
                     print("Column not found!")
-                    continue
+                    return
                 val = input("Enter value to match: ")
                 print(self.df[self.df[col] == val])
 
@@ -388,6 +388,7 @@ class SalesDataAnalyzer:
 
                 plt.figure(figsize=(10,6))
                 plt.stackp
+                return
                 
     # -----------------------------------------------------------
     # 7. SAVE VISUALIZATION
